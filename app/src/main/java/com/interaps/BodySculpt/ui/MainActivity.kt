@@ -1,7 +1,8 @@
-package com.interaps.BodySculpt
+package com.interaps.BodySculpt.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.interaps.BodySculpt.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

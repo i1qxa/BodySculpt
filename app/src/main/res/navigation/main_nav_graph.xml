@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.interaps.BodySculpt.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/breathGymnasticFragment"
+        android:name="com.interaps.BodySculpt.ui.breath_gymnastic.BreathGymnasticFragment"
+        android:label="fragment_breath_gymnastic"
+        tools:layout="@layout/fragment_breath_gymnastic" />
+    <fragment
+        android:id="@+id/menuOfDayFragment"
+        android:name="com.interaps.BodySculpt.ui.menu_of_day.MenuOfDayFragment"
+        android:label="fragment_menu_of_day"
+        tools:layout="@layout/fragment_menu_of_day" />
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.interaps.BodySculpt.ui.persona_iInfo.PersonalInfoFragment"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info" />
+    <fragment
+        android:id="@+id/recipeListFragment"
+        android:name="com.interaps.BodySculpt.ui.recipe_list.RecipeListFragment"
+        android:label="fragment_recipe_list"
+        tools:layout="@layout/fragment_recipe_list" />
+    <fragment
+        android:id="@+id/weightProgresFragment"
+        android:name="com.interaps.BodySculpt.ui.weight_progress.WeightProgresFragment"
+        android:label="fragment_weight_progres"
+        tools:layout="@layout/fragment_weight_progres" />
+</navigation>
