@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     //Dagger
     implementation ("com.google.dagger:dagger:2.50")
-    kapt ("com.google.dagger:dagger-compiler:2.40")
+    kapt ("com.google.dagger:dagger-compiler:2.50")
     //Room
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
@@ -68,5 +68,4 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("io.coil-kt:coil:2.5.0")
-    implementation("androidx.health:health-services-client:1.1.0-alpha02")
 }

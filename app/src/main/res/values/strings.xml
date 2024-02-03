@@ -2,4 +2,13 @@
     <string name="app_name">BodySculpt</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_you_current_weight">Enter you current weight</string>
+    <string name="enter_you_weight_of_dream">Enter your desired weight</string>
+    <string name="save">Save</string>
+    <string name="home">Home</string>
+    <string name="breath_gymnastic">Breath Gymnastic</string>
+    <string name="day_menu">Day Menu</string>
+    <string name="recipe_list">Recipe List</string>
+    <string name="weight_progress">Weight Progress</string>
+    <string name="person_info">Person Info</string>
 </resources>

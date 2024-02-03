@@ -5,56 +5,60 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.interaps.BodySculpt.R
+import com.interaps.BodySculpt.databinding.FragmentPersonalInfoBinding
+import com.interaps.BodySculpt.di.MainApp
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PersonalInfoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PersonalInfoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    @Inject lateinit var viewModel: PersonalInfoViewModel
+
+    private var _binding:FragmentPersonalInfoBinding? = null
+    private val binding:FragmentPersonalInfoBinding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personal_info, container, false)
+    ): View {
+        _binding = FragmentPersonalInfoBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PersonalInfoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PersonalInfoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity().application as MainApp).appComponent.inject(this)
+        observePersonInfo()
+        setupBtnSaveClickListener()
+    }
+
+    private fun observePersonInfo(){
+        lifecycleScope.launch {
+            viewModel.personInfoFlow.collect(){
+                binding.etCurrentWeight.setText(it.startWeight.toString())
+                binding.etWishWeight.setText(it.wishWeight.toString())
+                binding.etHeight.setText(it.height.toString())
             }
+        }
+    }
+
+    private fun setupBtnSaveClickListener(){
+        binding.btnSave.setOnClickListener {
+            viewModel.tryToUpdatePersonInfo(
+                binding.etCurrentWeight.text.toString().toDouble(),
+                binding.etWishWeight.text.toString().toDouble(),
+                binding.etHeight.text.toString().toInt()
+            )
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

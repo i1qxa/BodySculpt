@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.persona_iInfo.PersonalInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Spinner
+        android:id="@+id/spinnerGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/etCurrentWeight"
+        />
+    <EditText
+        android:id="@+id/etCurrentWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerGender"
+        app:layout_constraintBottom_toTopOf="@id/etWishWeight"
+        android:hint="@string/enter_you_current_weight"
+        android:inputType="numberDecimal"
+        />
+    <EditText
+        android:id="@+id/etWishWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etCurrentWeight"
+        app:layout_constraintBottom_toTopOf="@id/etHeight"
+        android:hint="@string/enter_you_weight_of_dream"
+        android:inputType="numberDecimal"
+        />
+    <EditText
+        android:id="@+id/etHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etWishWeight"
+        app:layout_constraintBottom_toTopOf="@id/btnSave"
+        android:hint="Please indicate your height"
+        android:inputType="numberDecimal"
+        />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etHeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/save"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
