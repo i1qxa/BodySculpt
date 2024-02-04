@@ -2,24 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/home"
         android:title="@string/home"  />
     <item
-        android:id="@+id/breathGymnastic"
+        android:id="@+id/breathGymnasticFragment"
         android:icon="@drawable/air"
         android:title="@string/breath_gymnastic" />
     <item
-        android:id="@+id/menuOfDay"
+        android:id="@+id/menuOfDayFragment"
         android:icon="@drawable/menu_book"
         android:title="@string/day_menu" />
     <item
-        android:id="@+id/weightProgress"
+        android:id="@+id/weightProgresFragment"
         android:icon="@drawable/chart"
         android:title="@string/weight_progress" />
 
     <item
-        android:id="@+id/personInfo"
+        android:id="@+id/personalInfoFragment"
         android:icon="@drawable/person"
         android:title="@string/person_info" />
 

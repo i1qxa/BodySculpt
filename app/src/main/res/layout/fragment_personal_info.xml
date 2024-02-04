@@ -6,43 +6,102 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.persona_iInfo.PersonalInfoFragment">
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barierHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="tvCurrentWeightHeader,tvGenderHeader,tvHeightHeader,tvWishWeightHeader"
+        />
+
+    <TextView
+        android:id="@+id/tvGenderHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/spinnerGender"
+        app:layout_constraintBottom_toBottomOf="@id/spinnerGender"
+        android:text="@string/gender"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_marginStart="10dp"
+        />
+
     <Spinner
         android:id="@+id/spinnerGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/barierHeader"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/etCurrentWeight"
         />
+
+    <TextView
+        android:id="@+id/tvCurrentWeightHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etCurrentWeight"
+        app:layout_constraintBottom_toBottomOf="@id/etCurrentWeight"
+        android:text="@string/current_weight"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_marginStart="10dp"
+        />
+
     <EditText
         android:id="@+id/etCurrentWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/barierHeader"
         app:layout_constraintTop_toBottomOf="@id/spinnerGender"
         app:layout_constraintBottom_toTopOf="@id/etWishWeight"
         android:hint="@string/enter_you_current_weight"
         android:inputType="numberDecimal"
         />
+
+    <TextView
+        android:id="@+id/tvWishWeightHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etWishWeight"
+        app:layout_constraintBottom_toBottomOf="@id/etWishWeight"
+        android:text="Desired weight"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_marginStart="10dp"
+        />
+
     <EditText
         android:id="@+id/etWishWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/barierHeader"
         app:layout_constraintTop_toBottomOf="@id/etCurrentWeight"
         app:layout_constraintBottom_toTopOf="@id/etHeight"
         android:hint="@string/enter_you_weight_of_dream"
         android:inputType="numberDecimal"
         />
+
+    <TextView
+        android:id="@+id/tvHeightHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etHeight"
+        app:layout_constraintBottom_toBottomOf="@id/etHeight"
+        android:text="@string/height"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:layout_marginStart="10dp"
+        />
+
     <EditText
         android:id="@+id/etHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/barierHeader"
         app:layout_constraintTop_toBottomOf="@id/etWishWeight"
         app:layout_constraintBottom_toTopOf="@id/btnSave"
         android:hint="Please indicate your height"

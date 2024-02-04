@@ -11,4 +11,12 @@
     <string name="recipe_list">Recipe List</string>
     <string name="weight_progress">Weight Progress</string>
     <string name="person_info">Person Info</string>
+    <string name="gender">Gender</string>
+    <string name="current_weight">Current weight</string>
+    <string name="height">Height</string>
+    <string-array name="genders">
+        <item>Not specified</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

@@ -35,4 +35,5 @@
         android:name="com.interaps.BodySculpt.ui.weight_progress.WeightProgresFragment"
         android:label="fragment_weight_progres"
         tools:layout="@layout/fragment_weight_progres" />
+
 </navigation>

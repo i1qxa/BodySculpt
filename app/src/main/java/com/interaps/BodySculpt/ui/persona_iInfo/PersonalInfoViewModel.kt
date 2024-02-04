@@ -18,8 +18,8 @@ class PersonalInfoViewModel @Inject constructor (private val personDao: PersonDa
         }
     }
 
-    fun tryToUpdatePersonInfo(currentWeight:Double, wishWeight:Double, height:Int){
-        updatePersonInfo(PersonDBEntity(1,1,currentWeight,wishWeight,height))
+    fun tryToUpdatePersonInfo(currentWeight:Double, wishWeight:Double, height:Int, gender:Int){
+        updatePersonInfo(PersonDBEntity(1,gender,currentWeight,wishWeight,height))
     }
 
 }

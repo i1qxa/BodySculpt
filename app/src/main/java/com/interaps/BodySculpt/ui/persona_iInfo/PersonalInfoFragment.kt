@@ -3,8 +3,11 @@ package com.interaps.BodySculpt.ui.persona_iInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.lifecycle.lifecycleScope
 import com.interaps.BodySculpt.R
 import com.interaps.BodySculpt.databinding.FragmentPersonalInfoBinding
@@ -35,14 +38,29 @@ class PersonalInfoFragment : Fragment() {
         (requireActivity().application as MainApp).appComponent.inject(this)
         observePersonInfo()
         setupBtnSaveClickListener()
+        setupSpinner()
     }
 
+    private fun setupSpinner(){
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.genders,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinnerGender.adapter = adapter
+        }
+    }
     private fun observePersonInfo(){
         lifecycleScope.launch {
-            viewModel.personInfoFlow.collect(){
-                binding.etCurrentWeight.setText(it.startWeight.toString())
-                binding.etWishWeight.setText(it.wishWeight.toString())
-                binding.etHeight.setText(it.height.toString())
+            viewModel.personInfoFlow.collect(){ personDBEntity ->
+                if (personDBEntity!=null){
+                    binding.etCurrentWeight.setText(personDBEntity.startWeight.toString())
+                    binding.etWishWeight.setText(personDBEntity.wishWeight.toString())
+                    binding.etHeight.setText(personDBEntity.height.toString())
+                    binding.spinnerGender.setSelection(personDBEntity.gender)
+                }
+
             }
         }
     }
@@ -52,7 +70,8 @@ class PersonalInfoFragment : Fragment() {
             viewModel.tryToUpdatePersonInfo(
                 binding.etCurrentWeight.text.toString().toDouble(),
                 binding.etWishWeight.text.toString().toDouble(),
-                binding.etHeight.text.toString().toInt()
+                binding.etHeight.text.toString().toInt(),
+                binding.spinnerGender.selectedItemPosition
             )
         }
     }
