@@ -6,11 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.interaps.BodySculpt.data.local.person.PersonDBEntity
 import com.interaps.BodySculpt.data.local.person.PersonDao
+import com.interaps.BodySculpt.data.local.weight_progress.WeightProgressDBEntity
+import com.interaps.BodySculpt.data.local.weight_progress.WeightProgressDao
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @Database(
     entities = [
         PersonDBEntity::class,
+        WeightProgressDBEntity::class,
     ],
     version = 1,
     exportSchema = false
@@ -18,6 +21,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun personDao(): PersonDao
+    abstract fun weightProgress():WeightProgressDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null
