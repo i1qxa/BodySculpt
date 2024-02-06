@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.weight_progress.WeightProgresFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.weight_progress.WeightProgressFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvEmptyChartData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/empty_weight_list"
+        android:layout_marginHorizontal="20dp"
+        />
 
-</FrameLayout>
+    <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
+        android:id="@+id/chartWeightProgress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tvWeightProgressHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/etWeight"
+        app:layout_constraintTop_toTopOf="@id/btnAdd"
+        app:layout_constraintBottom_toBottomOf="@id/btnAdd"
+        android:text="@string/weight"
+        />
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnAdd"
+        app:layout_constraintBottom_toBottomOf="@id/btnAdd"
+        android:inputType="numberDecimal"
+        />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/etWeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/save"
+        android:layout_marginBottom="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

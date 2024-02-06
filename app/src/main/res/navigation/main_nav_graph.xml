@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_recipe_list" />
     <fragment
         android:id="@+id/weightProgresFragment"
-        android:name="com.interaps.BodySculpt.ui.weight_progress.WeightProgresFragment"
+        android:name="com.interaps.BodySculpt.ui.weight_progress.WeightProgressFragment"
         android:label="fragment_weight_progres"
         tools:layout="@layout/fragment_weight_progres" />
 

@@ -1,19 +1,15 @@
 package com.interaps.BodySculpt.ui.persona_iInfo
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.interaps.BodySculpt.R
 import com.interaps.BodySculpt.databinding.FragmentPersonalInfoBinding
 import com.interaps.BodySculpt.di.MainApp
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

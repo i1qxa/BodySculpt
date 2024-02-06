@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface WeightProgressDao {
 
     @Query("SELECT * FROM WeightProgressDBEntity")
-    suspend fun getWeightProgress():Flow<List<WeightProgressDBEntity>>
+    fun getWeightProgress():Flow<List<WeightProgressDBEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addNewWeightProgressValue(value: WeightProgressDBEntity)

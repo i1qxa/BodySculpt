@@ -1,10 +1,9 @@
 package com.interaps.BodySculpt.di
 
-import android.app.Application
-import androidx.fragment.app.Fragment
 import com.interaps.BodySculpt.data.local.person.PersonDao
+import com.interaps.BodySculpt.data.local.weight_progress.WeightProgressDao
 import com.interaps.BodySculpt.ui.persona_iInfo.PersonalInfoFragment
-import dagger.BindsInstance
+import com.interaps.BodySculpt.ui.weight_progress.WeightProgressFragment
 import dagger.Component
 
 @Component(modules = [
@@ -14,11 +13,11 @@ interface AppComponent {
 
     val personDao:PersonDao
 
+    val weightProgressDao:WeightProgressDao
+
     fun inject(fragment: PersonalInfoFragment)
 
-    @Component.Factory
-    interface Factory {
-        fun create(@BindsInstance application: Application): AppComponent
-    }
+    fun injectWeightProgress(fragment: WeightProgressFragment)
+
 
 }
