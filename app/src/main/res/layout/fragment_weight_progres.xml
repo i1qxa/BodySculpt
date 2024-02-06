@@ -18,6 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:text="@string/empty_weight_list"
         android:layout_marginHorizontal="20dp"
+        android:visibility="gone"
         />
 
     <com.github.aachartmodel.aainfographics.aachartcreator.AAChartView
@@ -27,6 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnAdd"
         android:visibility="gone"
         />
 
@@ -44,11 +46,13 @@
         android:id="@+id/etWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/btnAdd"
         app:layout_constraintBottom_toBottomOf="@id/btnAdd"
         android:inputType="numberDecimal"
+        android:layout_marginHorizontal="10dp"
         />
 
     <Button

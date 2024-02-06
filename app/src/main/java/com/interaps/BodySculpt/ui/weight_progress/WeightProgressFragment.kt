@@ -18,10 +18,11 @@ import javax.inject.Inject
 
 class WeightProgressFragment : Fragment() {
 
-    @Inject lateinit var viewModel:WeightProgressViewModel
+    @Inject
+    lateinit var viewModel: WeightProgressViewModel
 
-    private var _binding:FragmentWeightProgresBinding? = null
-    private val binding:FragmentWeightProgresBinding
+    private var _binding: FragmentWeightProgresBinding? = null
+    private val binding: FragmentWeightProgresBinding
         get() = _binding!!
 
 
@@ -40,10 +41,10 @@ class WeightProgressFragment : Fragment() {
         setupBtnAddClickListener()
     }
 
-    private fun observeViewModel(){
+    private fun observeViewModel() {
         lifecycleScope.launch {
-            viewModel.weightProgress.collect(){ weightProgressDB ->
-                if(weightProgressDB!=null && weightProgressDB.isNotEmpty()){
+            viewModel.weightProgress.collect() { weightProgressDB ->
+                if (weightProgressDB != null && weightProgressDB.isNotEmpty()) {
                     binding.tvEmptyChartData.visibility = View.GONE
                     binding.chartWeightProgress.visibility = View.VISIBLE
                     val chartModel = AAChartModel()
@@ -52,21 +53,28 @@ class WeightProgressFragment : Fragment() {
                         title("Weight change")
                         backgroundColor("#FFFFFF")
                         dataLabelsEnabled(true)
-                        series(arrayOf(
-                            AASeriesElement()
-                                .name("Date")
-                                .data(weightProgressDB.map { it.value }.toTypedArray())
-                        ))
+                        series(
+                            arrayOf(
+                                AASeriesElement()
+                                    .name("Date")
+                                    .data(weightProgressDB.map { it.value }.toList().toTypedArray())
+                            )
+                        )
                     }
                     binding.chartWeightProgress.aa_drawChartWithChartModel(chartModel)
+                }else{
+                    binding.tvEmptyChartData.visibility = View.VISIBLE
                 }
             }
 
         }
     }
 
-    private fun setupBtnAddClickListener(){
-        viewModel.addWeight(binding.etWeight.text.toString().toDouble())
+    private fun setupBtnAddClickListener() {
+        binding.btnAdd.setOnClickListener {
+            viewModel.addWeight(binding.etWeight.text.toString().toDouble())
+            binding.etWeight.setText("")
+        }
     }
 
 
