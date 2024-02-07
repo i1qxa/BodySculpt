@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.menu_of_day.MenuOfDayFragment">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/recipeLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginVertical="5dp"
+        />
+
+    <TextView
+        android:id="@+id/recipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/recipeLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="5dp"
+        />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barierNutrientsHeader"
@@ -19,8 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/kcal_header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintStart_toEndOf="@id/recipeLogo"
+        app:layout_constraintTop_toBottomOf="@id/recipeName"
         android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
         />
@@ -29,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/proteins_header"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/recipeLogo"
         app:layout_constraintTop_toBottomOf="@id/tvKcalHeader"
         android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
@@ -40,7 +60,7 @@
         android:layout_height="wrap_content"
         android:text="@string/fat_header"
         app:layout_constraintStart_toStartOf="@id/barierNutrientsHeader"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipeName"
         android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
         />
@@ -53,27 +73,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvFatHeader"
         android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMenuOfDay"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvCarboHeader"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="5dp"
-        />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddMenuItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_input_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="15dp"
         />
 
 

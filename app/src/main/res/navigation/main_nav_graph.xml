@@ -19,7 +19,11 @@
         android:id="@+id/menuOfDayFragment"
         android:name="com.interaps.BodySculpt.ui.menu_of_day.MenuOfDayFragment"
         android:label="fragment_menu_of_day"
-        tools:layout="@layout/fragment_menu_of_day" />
+        tools:layout="@layout/fragment_menu_of_day" >
+        <action
+            android:id="@+id/action_menuOfDayFragment_to_recipeListFragment"
+            app:destination="@id/recipeListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/personalInfoFragment"
         android:name="com.interaps.BodySculpt.ui.persona_iInfo.PersonalInfoFragment"
@@ -27,9 +31,13 @@
         tools:layout="@layout/fragment_personal_info" />
     <fragment
         android:id="@+id/recipeListFragment"
-        android:name="com.interaps.BodySculpt.ui.recipe_list.RecipeListFragment"
+        android:name="com.interaps.BodySculpt.ui.menu_of_day.recipe_list.RecipeListFragment"
         android:label="fragment_recipe_list"
-        tools:layout="@layout/fragment_recipe_list" />
+        tools:layout="@layout/fragment_recipe_list" >
+        <action
+            android:id="@+id/action_recipeListFragment_to_menuOfDayFragment"
+            app:destination="@id/menuOfDayFragment" />
+    </fragment>
     <fragment
         android:id="@+id/weightProgresFragment"
         android:name="com.interaps.BodySculpt.ui.weight_progress.WeightProgressFragment"
