@@ -19,8 +19,17 @@
     <string name="kcal_header">Kcal: %1$s</string>
     <string name="proteins_header">Proteins: %1$s</string>
     <string name="fat_header">Fat: %1$s</string>
+    <string name="weight_header">Weight: %1$s</string>
     <string name="carbo_header">Carbo: %1$s</string>
+    <string name="error_loading_data">Error loading data</string>
     <string name="enter_the_name_of_the_dish">Enter the name of the dish</string>
+    <string name="empty_menu_list">You haven\'t filled out your meal plan yet today. Add new dishes to keep track of your nutrition.</string>
+    <string name="total_n_info">Total \n Info</string>
+    <string name="breathing_exercises">Breathing exercises</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="inhale">Inhale</string>
+    <string name="exhalation">Exhalation</string>
     <string-array name="genders">
         <item>Not specified</item>
         <item>Male</item>

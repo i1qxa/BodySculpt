@@ -17,15 +17,12 @@ class PersonalInfoFragment : Fragment() {
 
     @Inject lateinit var viewModel: PersonalInfoViewModel
 
-    private var _binding:FragmentPersonalInfoBinding? = null
-    private val binding:FragmentPersonalInfoBinding
-        get() = _binding!!
+    private val binding by lazy { FragmentPersonalInfoBinding.inflate(layoutInflater) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPersonalInfoBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -72,8 +69,5 @@ class PersonalInfoFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+
 }

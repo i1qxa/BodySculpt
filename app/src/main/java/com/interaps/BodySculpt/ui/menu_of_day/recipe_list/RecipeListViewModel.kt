@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.interaps.BodySculpt.data.local.AppDatabase
 import com.interaps.BodySculpt.data.remote.RecipeItemShort
 import com.interaps.BodySculpt.data.remote.RetrofitService
 import com.interaps.BodySculpt.data.remote.appId
@@ -12,8 +13,9 @@ import kotlinx.coroutines.launch
 
 class RecipeListViewModel(application: Application):AndroidViewModel(application) {
 
-    private val retrofit = RetrofitService.getInstance()
+    private val dao = AppDatabase.getInstance(application).menuDao()
 
+    private val retrofit = RetrofitService.getInstance()
 
     val listRecipes = MutableLiveData<List<RecipeItemShort?>>()
 
@@ -37,7 +39,16 @@ class RecipeListViewModel(application: Application):AndroidViewModel(application
                     recipes.add(it.recipe?.getRecipeShort())
                 }
                 listRecipes.postValue(recipes)
+            }else{
+                errorRequest.value = true
+                errorRequest.value = false
             }
+        }
+    }
+
+    fun addRecipeToMenu(item:RecipeItemShort){
+        viewModelScope.launch {
+            dao.addMenuItem(item.toDBMenuItem())
         }
     }
 

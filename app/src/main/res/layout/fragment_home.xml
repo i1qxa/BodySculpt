@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/BreatheExercise"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/breathe_exercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/Menu"
+        android:paddingHorizontal="5dp"
+        />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/Menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BreatheExercise"
+        app:layout_constraintBottom_toTopOf="@id/Chart"
+        android:paddingHorizontal="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/Chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/chart_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingHorizontal="5dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

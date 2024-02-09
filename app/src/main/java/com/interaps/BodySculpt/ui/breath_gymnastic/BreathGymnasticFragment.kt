@@ -5,56 +5,94 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.interaps.BodySculpt.R
+import com.interaps.BodySculpt.databinding.FragmentBreathGymnasticBinding
+import com.interaps.BodySculpt.databinding.FragmentMenuOfDayBinding
+import com.interaps.BodySculpt.ui.menu_of_day.MenuOfDayViewModel
+import java.text.SimpleDateFormat
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BreathGymnasticFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BreathGymnasticFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val viewModel by viewModels<BreathViewModel>()
 
+    private var _binding: FragmentBreathGymnasticBinding? = null
+    private val binding: FragmentBreathGymnasticBinding
+        get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_breath_gymnastic, container, false)
+    ): View {
+        _binding = FragmentBreathGymnasticBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BreathGymnasticFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BreathGymnasticFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupBtnClickListener()
+        observeExerciseState()
+    }
+
+    private fun startAnim() {
+        if (viewModel.exerciseInProgress.value==true){
+            binding.tvBreathDirection.text = requireContext().getString(R.string.inhale)
+            binding.ivProgress.animate().apply {
+                duration = 3000
+                rotation(1080F)
+                scaleX(3F)
+                scaleY(3F)
+                withEndAction {
+                    launchBackAnim()
                 }
             }
+        }
+    }
+
+    private fun launchBackAnim() {
+        if (viewModel.exerciseInProgress.value==true) {
+            binding.tvBreathDirection.text = requireContext().getString(R.string.exhalation)
+            binding.ivProgress.animate().apply {
+                duration = 1000
+                rotation(360F)
+                scaleX(1F)
+                scaleY(1F)
+                withEndAction {
+                    startAnim()
+                }
+            }
+        }
+    }
+
+    private fun setupBtnClickListener() {
+        binding.btnStartExercise.setOnClickListener {
+            viewModel.manageExerciseState()
+        }
+    }
+
+
+    private fun observeExerciseState(){
+        val formater = SimpleDateFormat("mm:ss")
+        viewModel.timerLD.observe(viewLifecycleOwner){
+            binding.tvCountDownTimer.text = formater.format(it)
+        }
+
+        viewModel.exerciseInProgress.observe(viewLifecycleOwner){
+            if (it){
+                binding.ivProgress.visibility = View.VISIBLE
+                binding.tvBreathDirection.visibility = View.VISIBLE
+                startAnim()
+                binding.btnStartExercise.text = requireContext().getString(R.string.stop)
+            }else{
+                binding.ivProgress.visibility = View.INVISIBLE
+                binding.tvBreathDirection.visibility = View.INVISIBLE
+                binding.btnStartExercise.text = requireContext().getString(R.string.start)
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.stopExercise()
+        _binding = null
     }
 }
